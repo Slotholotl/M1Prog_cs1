@@ -3,7 +3,7 @@ namespace UpAndDown
 {
     public partial class Form1 : Form
     {
-        private const int size = 16;
+        private const byte size = 16;
         Square player = new Square();
         Level level = new Level(
             [

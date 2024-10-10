@@ -37,7 +37,7 @@ namespace Endless
             DoubleBuffered = true;
 
             player.x = size*3;
-            player.y = size;
+            player.y = size*3;
 
             KeyDown += Form1_KeyDown;
             KeyUp += Form1_KeyUp;
@@ -109,12 +109,15 @@ namespace Endless
             }
             if (down)
             {
+                player.y += speed;
             }
             if (left)
             {
+                player.x -= speed;
             }
             if (right)
             {
+                player.x += speed;
             }
         }
     }
