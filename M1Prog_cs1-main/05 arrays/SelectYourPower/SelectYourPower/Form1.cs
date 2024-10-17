@@ -46,16 +46,16 @@ namespace SelectYourPower
         private void SelectPowerUp()
         {
             //1) reset de powerCount variable naar -1
-            powerCount = ???;
+            powerCount =-1 ;
         }
 
         private void PowerAdded()
         {
             //2) tel 1 bij de powerCount op;
-            powerCount ???;
+            powerCount =+1;
 
             //3) check of de powerCount waarde groter is dan de powerups lengte min 1
-            if (powerCount > ???)
+            if (powerCount > -1)
             {
                 powerCount = 0;
             }
@@ -90,7 +90,7 @@ namespace SelectYourPower
             for (int i = 0; i < powerUps.Length; i++)
             {
                 //4) maak dit af, zorg dat je de huidige powerUp string pakt uit powerUps, gebruik i
-                string powerUp = powerUps???;
+                string? powerUp = null;
 
                 SizeF sizeF = g.MeasureString(powerUp, Font);
                 g.DrawString(powerUp, Font, Brushes.White, x, 100);
@@ -114,7 +114,7 @@ namespace SelectYourPower
             for (int i = pickups.Count - 1; i >= 0; i--)
             {
                 //5) maak dit af, zorg dat je de huidige pickup Square pakt uit pickups, gebruik i
-                Square pickup = ???;
+                Square pickup = null;
                 pickup.x += -playerSpeed * frametime;
                 if (pickup.x < player.x + player.h)//picked up by player 
                 {

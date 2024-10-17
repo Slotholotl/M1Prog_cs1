@@ -1,10 +1,8 @@
-
-
 namespace MenuDraw
 {
     public partial class Form1 : Form
     {
-        string[] names = ["1up", "star", "flower", "mushroom", "10coin", "20coin", "10coin", "20coin", "mushroom"];
+        string[] names = { "1up", "star", "flower", "mushroom", "10coin", "20coin", "10coin", "20coin", "mushroom" };
         const int w = 22;
         const int h = 32;
         const int rows = 3;
@@ -34,21 +32,18 @@ namespace MenuDraw
 
         private void Form1_MouseClick(object? sender, MouseEventArgs e)
         {
-            //1) maak hier een for loop, die over cards loopt
+            // 1) Loop through the cards array
             for (int i = 0; i < cards.Length; i++)
             {
-                //2) pak hier 1 card uit cards, die van [i]
-                ????
+                // 2) Get the card at index [i]
+                Card card = cards[i];
 
-                //3) maak een if die kijkt of de muis X en Y in card.placement zit
-                // HINTS: 
-                // https://learn.microsoft.com/en-us/dotnet/api/system.drawing.rectangle.contains?view=net-8.0
-                // https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.mouseeventargs?view=windowsdesktop-8.0
-                
-                //HIER KOMT JE IF
+                // 3) Check if the mouse click is within the card's placement
+                if (card.placement.Contains(e.X, e.Y)) // Use Rectangle.Contains to check if the mouse coordinates are inside the card area
                 {
-                    //hier zeggen we dat de card omgedraait is
+                    // Turn the card over
                     card.turned = true;
+                    Invalidate(); // Redraw the form to reflect the changes
                 }
             }
         }
@@ -80,7 +75,7 @@ namespace MenuDraw
         {
             List<string> options = new List<string>();
             options.AddRange(names);
-            options.AddRange(names);
+            options.AddRange(names); // Add each name twice
             return options;
         }
 
@@ -90,28 +85,29 @@ namespace MenuDraw
             Graphics graphics = e.Graphics;
             graphics.Clear(Color.Black);
 
-            //4) maak hier een for loop, die over cards loopt
+            // 4) Loop over the cards array
             for (int i = 0; i < cards.Length; i++)
             {
-                //5) geef hier de card die in [i] zit door op de ????
-                DrawCard(graphics, ???);
+                // 5) Draw each card using the DrawCard method
+                DrawCard(graphics, cards[i]);
             }
         }
 
         private void DrawCard(Graphics graphics, Card card)
         {
-            Rectangle frame = cardback;
+            Rectangle frame = cardback; // Default to card back
             if (card.turned)
             {
-                frame = card.frame;
+                frame = card.frame; // If the card is turned, show the front
             }
 
+            // Draw the card using the card's placement and the appropriate frame (back or front)
             graphics.DrawImage(cardImg, card.placement, frame, GraphicsUnit.Pixel);
         }
 
         internal void DoLogic(float frametime)
         {
-            //gebruiken we nu even niet
+            // Not used for now
         }
     }
 }
