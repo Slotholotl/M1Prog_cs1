@@ -9,12 +9,16 @@ namespace RpgBattle
         {
             InitializeComponent();
 
-            ???
+
             //2) vervang de code hieronder door de updateMonsterHealth();
-            monsterhealth.Text=monsterHealth.ToString();
+            private void UpdateMonsterHealth()
+            {
+                monsterhealth.Text = monsterHealth.ToString();
+            }
+
         }
 
-        ???
+
         //1) maak hier een nieuwe function:
         // UpdateMonsterHealth
         // gebruik private en void

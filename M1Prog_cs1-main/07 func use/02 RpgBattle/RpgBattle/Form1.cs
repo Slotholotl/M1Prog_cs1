@@ -8,16 +8,39 @@ namespace RpgBattle
         public Form1()
         {
             InitializeComponent();
-            monsterhealth.Text=monsterHealth.ToString();
+            monsterhealth.Text = monsterHealth.ToString();
         }
-		//1)
-		???
-		//maak hier een function: 
-		//- DoDamage, 
-		//- met 1 argument: (int damage), 
-		//- maak de function private, 
-		// - met void als returntype
-        
+        //1)
+
+
+        private void DoDamage(int damage)
+        {
+            // If monster health is already 0 or less, return without doing anything
+            if (monsterHealth <= 0)
+            {
+                return;
+            }
+
+            // Subtract the damage from monster health
+            monsterHealth -= damage;
+
+            // Ensure health doesn't drop below 0
+            if (monsterHealth < 0)
+            {
+                monsterHealth = 0;
+            }
+
+            // Update the monster's health label on the UI
+            monsterhealth.Text = monsterHealth.ToString();
+        }
+
+
+        //maak hier een function: 
+        //- DoDamage, 
+        //- met 1 argument: (int damage), 
+        //- maak de function private, 
+        // - met void als returntype
+
         //2) zet de code hieronder tussen de {} (de body of scope van de function)
 
         //monsterHealth -= damage;
@@ -27,7 +50,7 @@ namespace RpgBattle
         private void attack_Click(object sender, EventArgs e)
         {
             //3)
-            DoDamage(???); //gebruik hier de playerAttack
+            DoDamage(playerAttack); //gebruik hier de playerAttack
 			
 
         }
@@ -35,7 +58,7 @@ namespace RpgBattle
         private void fireball_Click(object sender, EventArgs e)
         {
             //4)
-            DoDamage(???); //gebruik hier de playerMagicAttack
+            DoDamage(playerMagicAttack); //gebruik hier de playerMagicAttack
 
 
         }
